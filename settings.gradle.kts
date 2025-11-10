@@ -21,4 +21,4 @@ dependencyResolutionManagement {
 
 rootProject.name = "AndroidChatBot"
 include(":app")
- 
+include(":chatbot")
