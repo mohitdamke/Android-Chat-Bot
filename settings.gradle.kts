@@ -8,14 +8,18 @@ pluginManagement {
             }
         }
         mavenCentral()
+        // Gemini AI SDK Maven repository
         gradlePluginPortal()
     }
 }
+
 dependencyResolutionManagement {
     repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
     repositories {
         google()
         mavenCentral()
+        // Gemini AI SDK Maven repository
+
     }
 }
 
