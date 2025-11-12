@@ -1,18 +1,18 @@
 # 🤖 Android ChatBot Library
 
-A lightweight and modern **AI ChatBot library** for Android, built with **Kotlin** and **Jetpack Compose**.
-This library makes it simple for developers to integrate conversational AI features (like Gemini API) into any Android app with minimal setup.
+A **lightweight and modern AI ChatBot library** for Android, built using **Kotlin** and **Jetpack Compose**.
+It allows developers to easily add an **AI-powered chat screen** (like Gemini) into their app — ready to use in just a few lines.
 
 ---
 
 ## 🚀 Features
 
-✔️ Easy to integrate and use in any Android project
-✔️ Built with Kotlin and Jetpack Compose
-✔️ Lightweight — no unnecessary dependencies
-✔️ Can connect with Gemini or any custom AI API
-✔️ Customizable message UI
-✔️ MVVM-friendly architecture
+✅ Ready-to-use Chat UI (like WhatsApp style)
+✅ Connects with **Gemini API** or any custom AI API
+✅ Built with **Jetpack Compose + MVVM**
+✅ Lightweight and simple integration
+✅ Auto-scrolls to the latest message
+✅ Fully customizable
 
 ---
 
@@ -20,7 +20,7 @@ This library makes it simple for developers to integrate conversational AI featu
 
 ### Step 1 — Add JitPack Repository
 
-In your **project-level** `settings.gradle`:
+Add this inside your **project-level** `settings.gradle`:
 
 ```kotlin
 dependencyResolutionManagement {
@@ -38,84 +38,88 @@ In your **app-level** `build.gradle.kts`:
 
 ```kotlin
 dependencies {
-    implementation("com.github.mohitdamke:AndroidChatBot:1.0.0")
+    implementation("com.github.RaeesDev:AndroidChatBot:1.0.0")
 }
 ```
 
-> Replace `RaeesDev` and version with your GitHub username and release tag.
+> Replace `RaeesDev` with your actual GitHub username and tag version.
 
 ---
 
-## ⚙️ Usage
+## ⚙️ Setup
 
-### 🧩 Initialize and Use the ChatBot
+### Step 1 — Add API Key
 
-```kotlin
-import com.raees.chatbot.ChatBot
+In your **`res/values/strings.xml`**, add:
 
-ChatBot.reply(context, "Hello from RaeesChatBot!")
+```xml
+<string name="apiKey">YOUR_GEMINI_API_KEY</string>
 ```
 
-✅ This displays a simple chatbot-style response.
-You can extend it to show messages in your own Compose-based UI or integrate with an AI API.
-
 ---
 
-### 💬 Integrate Gemini (Optional)
+## 💬 Usage (Just 2 Lines!)
 
-If you want real AI-powered replies, you can connect it to the Gemini API:
+In your `MainActivity.kt`:
 
 ```kotlin
-ChatBot.initialize(apiKey = "YOUR_GEMINI_API_KEY")
+@AndroidEntryPoint
+class MainActivity : ComponentActivity() {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
 
-ChatBot.ask("Tell me something interesting!") { reply ->
-    Log.d("ChatBot", reply)
+        enableEdgeToEdge()
+        ChatBot.initialize(getString(R.string.apiKey))  // Initialize your Gemini key
+
+        setContent {
+            AndroidChatBotTheme {
+                val intent = Intent(this, ChatBotActivity::class.java)
+                startActivity(intent) // 🚀 Opens ChatBot UI instantly
+            }
+        }
+    }
 }
 ```
 
+That’s it!
+Run your app and you’ll see a **WhatsApp-style chat screen** powered by Gemini AI 💬
+
 ---
 
-## 🎨 Customization Options
+## 🎨 Result
 
-| Function                                                  | Description              |
-| --------------------------------------------------------- | ------------------------ |
-| `setBotName("RaeesBot")`                                  | Sets custom chatbot name |
-| `setTheme(isDark = true)`                                 | Enables dark mode UI     |
-| `setCustomPrompt("You are a helpful Android assistant.")` | Sets a custom AI prompt  |
+**✅ Example output:**
+
+* You type: “Hi”
+* Bot replies: “Hello there! How can I help you today?”
+
+The messages appear at the **bottom**, with smooth scrolling like real chat apps.
+
+---
+
+## ⚙️ Optional: Customization
+
+| Function                                          | Description          |
+| ------------------------------------------------- | -------------------- |
+| `setBotName("RaeesBot")`                          | Sets custom bot name |
+| `setTheme(isDark = true)`                         | Enables dark mode    |
+| `setCustomPrompt("You are a helpful assistant.")` | Changes AI behavior  |
 
 ---
 
 ## 🧠 Tech Stack
 
-* **Kotlin**
-* **Jetpack Compose**
-* **Coroutines + Flow**
-* **MVVM Architecture**
-* **Gemini API (optional)**
-
----
-
-## 📂 Project Structure
-
-```
-AndroidChatBot/
- ┣ app/
- ┣ chatbot/
- ┃ ┣ src/main/java/com/raees/chatbot/
- ┃ ┃ ┣ ChatBot.kt
- ┃ ┃ ┣ ChatMessage.kt
- ┃ ┃ ┗ utils/
- ┃ ┗ build.gradle.kts
- ┣ settings.gradle.kts
- ┗ README.md
-```
+* Kotlin
+* Jetpack Compose
+* MVVM Architecture
+* Coroutines
+* Gemini API
 
 ---
 
 ## 📸 Demo
 
-*(Optional — Add a screenshot or GIF of your chatbot in action)*
-Example:
+*(Optional – Add your own GIF or screenshot)*
 
 ```
 ![ChatBot Demo](https://github.com/RaeesDev/AndroidChatBot/blob/main/screenshots/demo.gif)
@@ -123,41 +127,19 @@ Example:
 
 ---
 
-## 🧑‍💻 Contributing
-
-Contributions are welcome!
-To contribute:
-
-1. Fork the repository
-2. Create your feature branch (`feature/chat-ui`)
-3. Commit your changes
-4. Open a Pull Request 🚀
-
----
-
-## 📄 License
-
-```
-MIT License
-
-Copyright (c) 2025 Raees
-Permission is hereby granted, free of charge, to any person obtaining a copy...
-```
-
----
-
-## 💼 Author
+## 🧑‍💻 Author
 
 **👨‍💻 Raees**
-📍 Android Developer | Kotlin | Jetpack Compose Enthusiast
-🔗 [GitHub](https://github.com/mohitdamke)
+Android Developer | Kotlin | Jetpack Compose Enthusiast
+🔗 [GitHub](https://github.com/RaeesDev)
 
 ---
 
 ## ⭐ Support
 
-If you like this project, don’t forget to give it a **⭐ on GitHub** and share it with other Android developers!
+If you like this library, please give it a **⭐ on GitHub** — it really helps!
 
 ---
 
-Would you like me to **enhance this README** with a **Compose-based example UI snippet** (showing a working chatbot chat screen) so it looks even more professional and interactive on GitHub?
+Would you like me to include a **small code snippet** showing how to get both user & bot messages (for custom UIs)?
+It’ll make your README even more helpful for devs who want to use their own chat design.
