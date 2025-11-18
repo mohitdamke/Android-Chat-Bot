@@ -1,145 +1,147 @@
-# 🤖 Android ChatBot Library
+# 🤖 Android ChatBot Library (Powered by Google Gemini)
 
-A **lightweight and modern AI ChatBot library** for Android, built using **Kotlin** and **Jetpack Compose**.
-It allows developers to easily add an **AI-powered chat screen** (like Gemini) into their app — ready to use in just a few lines.
-
----
-
-## 🚀 Features
-
-✅ Ready-to-use Chat UI (like WhatsApp style)
-✅ Connects with **Gemini API** or any custom AI API
-✅ Built with **Jetpack Compose + MVVM**
-✅ Lightweight and simple integration
-✅ Auto-scrolls to the latest message
-✅ Fully customizable
+A plug-and-play AI chatbot UI for Android apps — written in **Kotlin + Jetpack Compose**.
+Just initialize the SDK and launch the `ChatBotActivity` to get a fully functional AI chat screen.
 
 ---
 
-## 📦 Installation
+## 📌 Preview
 
-### Step 1 — Add JitPack Repository
+✨ Fully designed chat UI
+✨ Modern input bar with loading state
+✨ User & Bot chat bubbles
+✨ Auto-scroll, clean spacing, smooth UX
 
-Add this inside your **project-level** `settings.gradle`:
+---
 
-```kotlin
+## 🚀 Installation
+
+### 1️⃣ Add JitPack to `settings.gradle`
+
+```gradle
 dependencyResolutionManagement {
     repositories {
-        google()
         mavenCentral()
-        maven { url = uri("https://jitpack.io") }
+        maven { url "https://jitpack.io" }
     }
 }
 ```
 
-### Step 2 — Add the Library Dependency
+### 2️⃣ Add Library Dependency
 
-In your **app-level** `build.gradle.kts`:
-
-```kotlin
-dependencies {
-    implementation("com.github.RaeesDev:AndroidChatBot:1.0.0")
-}
+```gradle
+implementation("com.github.YOUR_GITHUB_USERNAME:android-chatbot:1.0.0")
 ```
 
-> Replace `RaeesDev` with your actual GitHub username and tag version.
+> 🔁 Replace `mohitdamke` with your GitHub username.
+> 🔁 Update the version tag when releasing new updates.
 
 ---
 
-## ⚙️ Setup
+## 🔑 Add API Key
 
-### Step 1 — Add API Key
-
-In your **`res/values/strings.xml`**, add:
+In `res/values/strings.xml`:
 
 ```xml
-<string name="apiKey">YOUR_GEMINI_API_KEY</string>
+<string name="apiKey">YOUR_API_KEY_HERE</string>
 ```
 
 ---
 
-## 💬 Usage (Just 2 Lines!)
+## 💬 Usage
 
-In your `MainActivity.kt`:
+Add this to your `MainActivity.kt`:
 
 ```kotlin
-@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         enableEdgeToEdge()
-        ChatBot.initialize(getString(R.string.apiKey))  // Initialize your Gemini key
 
-        setContent {
-            AndroidChatBotTheme {
-                val intent = Intent(this, ChatBotActivity::class.java)
-                startActivity(intent) // 🚀 Opens ChatBot UI instantly
-            }
-        }
+        // Initialize SDK (Required)
+        ChatBot.initialize(getString(R.string.apiKey))
+
+        // Launch ChatBot Screen
+        startActivity(Intent(this, ChatBotActivity::class.java))
     }
 }
 ```
 
-That’s it!
-Run your app and you’ll see a **WhatsApp-style chat screen** powered by Gemini AI 💬
+That’s it — no extra setup needed!
+The library will automatically load the full chat UI & Gemini conversation system.
 
 ---
 
-## 🎨 Result
+## ⚙️ Minimum Requirements
 
-**✅ Example output:**
-
-* You type: “Hi”
-* Bot replies: “Hello there! How can I help you today?”
-
-The messages appear at the **bottom**, with smooth scrolling like real chat apps.
-
----
-
-## ⚙️ Optional: Customization
-
-| Function                                          | Description          |
-| ------------------------------------------------- | -------------------- |
-| `setBotName("RaeesBot")`                          | Sets custom bot name |
-| `setTheme(isDark = true)`                         | Enables dark mode    |
-| `setCustomPrompt("You are a helpful assistant.")` | Changes AI behavior  |
+| Component | Requirement                  |
+| --------- | ---------------------------- |
+| Android   | API 24+                      |
+| Language  | Kotlin                       |
+| UI        | Jetpack Compose (Material 3) |
+| Internet  | Required                     |
 
 ---
 
-## 🧠 Tech Stack
+## 🎨 Customization (Coming Soon)
 
-* Kotlin
-* Jetpack Compose
-* MVVM Architecture
-* Coroutines
-* Gemini API
+| Feature                   | Status      |
+| ------------------------- | ----------- |
+| Theme color customization | 🟡 Upcoming |
+| Profile/Bot icons         | 🟡 Upcoming |
+| Voice Input               | 🔜          |
+| Image Support             | 🔜          |
+| Message timestamps        | 🔜          |
 
 ---
 
-## 📸 Demo
+## 📦 Sample Integration Project
 
-*(Optional – Add your own GIF or screenshot)*
+A demo app showing complete implementation is included inside:
 
 ```
-![ChatBot Demo](https://github.com/RaeesDev/AndroidChatBot/blob/main/screenshots/demo.gif)
+/example/
 ```
+
+(If you want, I can generate this folder for the repo.)
 
 ---
 
-## 🧑‍💻 Author
+## 🧩 Library Architecture
 
-**👨‍💻 Raees**
-Android Developer | Kotlin | Jetpack Compose Enthusiast
-🔗 [GitHub](https://github.com/RaeesDev)
+* Jetpack Compose UI
+* Material 3 Design
+* MVVM Pattern
+* Google Gemini API Integration
+* Kotlin Coroutines + Flows
+
+---
+
+## 🐞 Issues & Contributions
+
+Found a bug? Have a feature request?
+Create an issue here on GitHub — contributions are welcome!
 
 ---
 
 ## ⭐ Support
 
-If you like this library, please give it a **⭐ on GitHub** — it really helps!
+If this library helped you, support the project by **giving a star ⭐**.
+Your encouragement motivates further updates and features.
 
 ---
 
-Would you like me to include a **small code snippet** showing how to get both user & bot messages (for custom UIs)?
-It’ll make your README even more helpful for devs who want to use their own chat design.
+### 🔥 Author
+
+**Mohit Damke (Android Developer)**
+Built with ❤️ for developers who want to add AI to their apps easily.
+
+---
+
+### 📄 License
+
+You can choose one of the following for your repo:
+
+* MIT License (recommended for open usage)
+* Apache 2.0 License
+* Proprietary (if you want private/paid library later)
