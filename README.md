@@ -3,9 +3,9 @@
 A plug-and-play **AI Chatbot UI for Android** — built using **Kotlin + Jetpack Compose**.
 Just initialize the SDK and launch `ChatBotActivity` to get a complete AI chat interface.
 
----
-
 ## 📌 Preview
+
+<div align="center"> <img src="https://github.com/user-attachments/assets/cfb2a519-c384-4512-8ac0-c0e65376f1e3" width="320" /> &nbsp;&nbsp; <img src="https://github.com/user-attachments/assets/8562647e-55f0-435f-b401-29299c7b0953" width="320" /> </div> <br>
 
 ✨ Fully designed chat interface
 ✨ Modern input bar with loading state
