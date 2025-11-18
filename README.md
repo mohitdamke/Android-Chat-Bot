@@ -49,11 +49,7 @@ dependencyResolutionManagement {
 ### 2️⃣ Add library dependency
 
 ```gradle
-implementation("com.github.YOUR_GITHUB_USERNAME:android-chatbot:1.0.0")
-```
-
-> Replace `YOUR_GITHUB_USERNAME` with your GitHub username.
-> Update version name when releasing new updates.
+implementation("com.github.mohitdamke:android-chatbot:1.0.0")
 
 ---
 
