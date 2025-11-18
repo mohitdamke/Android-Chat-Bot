@@ -1,16 +1,16 @@
 # 🤖 Android ChatBot Library (Powered by Google Gemini)
 
-A plug-and-play AI chatbot UI for Android apps — written in **Kotlin + Jetpack Compose**.
-Just initialize the SDK and launch the `ChatBotActivity` to get a fully functional AI chat screen.
+A plug-and-play **AI Chatbot UI for Android** — built using **Kotlin + Jetpack Compose**.
+Just initialize the SDK and launch `ChatBotActivity` to get a complete AI chat interface.
 
 ---
 
 ## 📌 Preview
 
-✨ Fully designed chat UI
+✨ Fully designed chat interface
 ✨ Modern input bar with loading state
-✨ User & Bot chat bubbles
-✨ Auto-scroll, clean spacing, smooth UX
+✨ User/Bot message bubbles
+✨ Auto scroll with smooth UX
 
 ---
 
@@ -27,18 +27,18 @@ dependencyResolutionManagement {
 }
 ```
 
-### 2️⃣ Add Library Dependency
+### 2️⃣ Add library dependency
 
 ```gradle
 implementation("com.github.YOUR_GITHUB_USERNAME:android-chatbot:1.0.0")
 ```
 
-> 🔁 Replace `mohitdamke` with your GitHub username.
-> 🔁 Update the version tag when releasing new updates.
+> Replace `YOUR_GITHUB_USERNAME` with your GitHub username.
+> Update version name when releasing new updates.
 
 ---
 
-## 🔑 Add API Key
+## 🔑 Add Gemini API Key
 
 In `res/values/strings.xml`:
 
@@ -50,7 +50,7 @@ In `res/values/strings.xml`:
 
 ## 💬 Usage
 
-Add this to your `MainActivity.kt`:
+Add inside `MainActivity.kt`:
 
 ```kotlin
 class MainActivity : ComponentActivity() {
@@ -58,7 +58,7 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
 
-        // Initialize SDK (Required)
+        // Initialize SDK
         ChatBot.initialize(getString(R.string.apiKey))
 
         // Launch ChatBot Screen
@@ -67,43 +67,76 @@ class MainActivity : ComponentActivity() {
 }
 ```
 
-That’s it — no extra setup needed!
-The library will automatically load the full chat UI & Gemini conversation system.
+That's it 🎉
+The chatbot screen will load with message history, bubbles, UI & Gemini conversation handling.
+
+---
+
+## 🎨 Customization (Full UI Control)
+
+The library allows developers to **customize 100% of the UI** using `ChatBotUIConfig`.
+
+### ✨ Example
+
+```kotlin
+ChatScreen(
+    config = ChatBotUIConfig(
+        userBubbleColor = Color(0xFF222222),
+        botBubbleColor = Color.White,
+        userTextColor = Color.White,
+        botTextColor = Color.Black,
+        bubbleCornerRadius = 22.dp,
+        backgroundColor = Color(0xFF101012),
+
+        userIconRes = R.drawable.my_profile,
+        botIconRes = R.drawable.my_robot,
+
+        userIconSize = 52.dp,
+        botIconSize = 38.dp,
+
+        inputBarColor = Color.DarkGray,
+        sendButtonColor = Color(0xFF4CAF50)
+    )
+)
+```
+
+### 🧩 Supported Customization Options
+
+| UI Component              | Customizable |
+| ------------------------- | ------------ |
+| Background Color          | ✅            |
+| Chat Bubbles (User / Bot) | ✅            |
+| Text Colors               | ✅            |
+| Bubble Corner Radius      | ✅            |
+| Profile Icons             | ✅            |
+| Icon Size                 | ✅            |
+| Input Bar UI              | ✅            |
+| Send Button Color         | ✅            |
+
+➡️ No code changes required — configuration only.
 
 ---
 
 ## ⚙️ Minimum Requirements
 
-| Component | Requirement                  |
-| --------- | ---------------------------- |
-| Android   | API 24+                      |
-| Language  | Kotlin                       |
-| UI        | Jetpack Compose (Material 3) |
-| Internet  | Required                     |
-
----
-
-## 🎨 Customization (Coming Soon)
-
-| Feature                   | Status      |
-| ------------------------- | ----------- |
-| Theme color customization | 🟡 Upcoming |
-| Profile/Bot icons         | 🟡 Upcoming |
-| Voice Input               | 🔜          |
-| Image Support             | 🔜          |
-| Message timestamps        | 🔜          |
+| Component | Requirement     |
+| --------- | --------------- |
+| Android   | API 24+         |
+| Language  | Kotlin          |
+| UI        | Jetpack Compose |
+| Internet  | Required        |
 
 ---
 
 ## 📦 Sample Integration Project
 
-A demo app showing complete implementation is included inside:
+Example app included inside:
 
 ```
 /example/
 ```
 
-(If you want, I can generate this folder for the repo.)
+(If missing — clone this repo and request it in Issues.)
 
 ---
 
@@ -112,36 +145,38 @@ A demo app showing complete implementation is included inside:
 * Jetpack Compose UI
 * Material 3 Design
 * MVVM Pattern
-* Google Gemini API Integration
 * Kotlin Coroutines + Flows
+* Google Gemini API Integration
 
 ---
 
 ## 🐞 Issues & Contributions
 
-Found a bug? Have a feature request?
-Create an issue here on GitHub — contributions are welcome!
+Found a bug or want new features?
+🔗 Open an **Issue / Pull Request** — contributions are welcomed.
 
 ---
 
-## ⭐ Support
+## ⭐ Support the project
 
-If this library helped you, support the project by **giving a star ⭐**.
-Your encouragement motivates further updates and features.
+If this project helped you:
+👉 **Give a star ⭐ on GitHub** to support its development.
 
 ---
 
 ### 🔥 Author
 
-**Mohit Damke (Android Developer)**
-Built with ❤️ for developers who want to add AI to their apps easily.
+**Mohit Damke — Android Developer**
+Built with ❤️ for developers who want to integrate AI in minutes.
 
 ---
 
 ### 📄 License
 
-You can choose one of the following for your repo:
+You can choose one:
 
-* MIT License (recommended for open usage)
-* Apache 2.0 License
-* Proprietary (if you want private/paid library later)
+* MIT License (recommended)
+* Apache 2.0
+* Proprietary (if planning paid distribution later)
+
+---
