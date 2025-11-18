@@ -1,17 +1,25 @@
 package mohit.ai.chatbot
 
+import android.util.Log
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
+import mohit.ai.chatbot.config.ChatBotUIConfig
 import mohit.ai.chatbot.network.GeminiClient
 import mohit.ai.chatbot.network.GeminiRequest
 
 object ChatBot {
 
+    val version: String
+        get() = BuildConfig.CHATBOT_VERSION
     private var apiKey: String? = null
     private const val MODEL = "gemini-2.0-flash"
-
-    fun initialize(apiKey: String) {
+    var uiConfig: ChatBotUIConfig = ChatBotUIConfig()
+        private set
+    fun initialize(apiKey: String, config: ChatBotUIConfig = ChatBotUIConfig()) {
         this.apiKey = apiKey
+        this.uiConfig = config
+        Log.d("ChatBot", "ChatBot Library initialized — v$version")
+
     }
 
     suspend fun ask(prompt: String): String {

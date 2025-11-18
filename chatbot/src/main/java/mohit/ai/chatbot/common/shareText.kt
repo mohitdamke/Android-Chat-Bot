@@ -1,0 +1,11 @@
+package mohit.ai.chatbot.common
+
+import android.content.Context
+import android.content.Intent
+
+fun shareText(context: Context, text: String) {
+    val intent = Intent(Intent.ACTION_SEND)
+    intent.type = "text/plain"
+    intent.putExtra(Intent.EXTRA_TEXT, text)
+    context.startActivity(Intent.createChooser(intent, "Share via"))
+}

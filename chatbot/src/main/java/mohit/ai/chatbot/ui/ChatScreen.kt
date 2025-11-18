@@ -16,45 +16,59 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import kotlinx.coroutines.launch
 import mohit.ai.chatbot.viewmodel.ChatViewModel
 import mohit.ai.chatbot.model.ChatMessage
+import mohit.ai.chatbot.config.ChatBotUIConfig
 
 @RequiresApi(Build.VERSION_CODES.VANILLA_ICE_CREAM)
 @Composable
-fun ChatScreen(viewModel: ChatViewModel = viewModel()) {
+fun ChatScreen(
+    viewModel: ChatViewModel = viewModel(),
+    config: ChatBotUIConfig = ChatBotUIConfig()   // 🔥 config injected here
+) {
+
     val messages by remember { derivedStateOf { viewModel.messages } }
     val listState = rememberLazyListState()
-    val coroutineScope = rememberCoroutineScope()
+    val scope = rememberCoroutineScope()
 
-    // Auto-scroll to the latest message
+    // Auto-scroll when new messages arrive
     LaunchedEffect(messages.size) {
         if (messages.isNotEmpty()) {
-            coroutineScope.launch {
-                listState.animateScrollToItem(0)
-            }
+            scope.launch { listState.animateScrollToItem(0) }
         }
     }
 
     Scaffold(
+        containerColor = config.backgroundColor,   // 🔥 customizable background
+        contentWindowInsets = WindowInsets(0, 0, 0, 0),
         bottomBar = {
             ChatInputBar(
                 text = viewModel.inputText.value,
                 onTextChange = viewModel::onInputChange,
                 onSend = viewModel::sendMessage,
-                isLoading = viewModel.isLoading.value
+                isLoading = viewModel.isLoading.value,
             )
         }
     ) { padding ->
+
         LazyColumn(
             state = listState,
-            reverseLayout = true, // 👈 Important for WhatsApp-style (bottom-up)
+            reverseLayout = true,
             modifier = Modifier
                 .fillMaxSize()
-                .padding(padding)
-                .background(Color(0xFFF7F8FA))
-                .padding(horizontal = 12.dp, vertical = 8.dp)
+                .padding(
+                    PaddingValues(
+                        start = 12.dp,
+                        end = 12.dp,
+                        top = 6.dp,
+                        bottom = padding.calculateBottomPadding() + 6.dp
+                    )
+                )
+                .background(config.backgroundColor),         // 🔥 customizable
+            verticalArrangement = Arrangement.spacedBy(10.dp)
         ) {
-            // 👇 reverse order so the latest message stays at the bottom visually
-            items(messages.reversed()) { msg ->
-                ChatBubble(message = msg)
+            items(messages.reversed()) { msg: ChatMessage ->
+                ChatBubble(
+                    message = msg,
+                )
             }
         }
     }

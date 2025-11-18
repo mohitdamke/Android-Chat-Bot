@@ -13,6 +13,8 @@ android {
         minSdk = 26
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles("consumer-rules.pro")
+        buildConfigField("String", "CHATBOT_VERSION", "\"1.0.0\"")
+
     }
 
     buildTypes {
@@ -37,7 +39,8 @@ android {
 
 
     buildFeatures {
-        compose = true // ✅ enable Compose
+        compose = true
+        buildConfig = true
     }
 
 }
