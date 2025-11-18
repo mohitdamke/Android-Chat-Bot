@@ -3,6 +3,25 @@
 A plug-and-play **AI Chatbot UI for Android** — built using **Kotlin + Jetpack Compose**.
 Just initialize the SDK and launch `ChatBotActivity` to get a complete AI chat interface.
 
+## 🔥 New Update — Copy & Share Messages
+
+You can now copy or share any message directly inside the chat.
+
+Action	Gesture
+Show copy/share options	Long-press on any message
+Hide the action buttons	Single tap on the message bubble
+
+✔ Works for both user & bot messages
+✔ Clean UI with smooth UX
+✔ 100% optional — doesn't affect normal chatting
+
+Normal	Actions Visible
+| **Normal**                                                                                               | **Actions Visible**                                                                                      |
+| -------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- |
+| <img src="https://github.com/user-attachments/assets/1111ba50-5b8d-49d2-8632-aed195db0a4c" width="330"/> | <img src="https://github.com/user-attachments/assets/af11c0c2-9d56-4acd-b136-ae931872368f" width="330"/> |
+
+
+
 ## 📌 Preview
 
 <div align="center"> <img src="https://github.com/user-attachments/assets/cfb2a519-c384-4512-8ac0-c0e65376f1e3" width="320" /> &nbsp;&nbsp; <img src="https://github.com/user-attachments/assets/8562647e-55f0-435f-b401-29299c7b0953" width="320" /> </div> <br>
